@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diamond Smile</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="https://ik.imagekit.io/GotoLink/Links/Logo.ico">
+
+    <style>
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Cairo', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            background-color: #000;
+            overflow-x: hidden;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            background: linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.75)), 
+                        url('https://ik.imagekit.io/GotoLink/Links/BG.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 550px; 
+            background: rgba(255, 255, 255, 0.03);
+            padding: 40px 25px;
+            border-radius: 35px;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin: 20px auto;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
+        }
+
+        .profile-pic {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            padding: 3px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.05));
+        }
+
+        .profile-pic img {
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        h1 { margin: 0 0 10px; font-size: 28px; font-weight: 700; color: #fff; }
+        .subtitle { margin-bottom: 25px; font-size: 15px; color: rgba(255, 255, 255, 0.7); line-height: 1.5; }
+
+        /* 🌍 Languages */
+        .lang-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .lang-box {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .flag {
+            width: 30px; height: 20px;
+            object-fit: cover;
+            margin-bottom: 6px;
+            border-radius: 4px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+
+        .lang-box button {
+            background: transparent;
+            border: none;
+            color: rgba(255,255,255,0.6);
+            font-size: 11px;
+            font-weight: 700;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+        }
+
+        /* 👨‍⚕️ Doctors Names - التعديل الجديد هنا */
+        .doctors {
+            display: flex;
+            justify-content: space-between;
+            margin: 20px 0 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 20px;
+        }
+
+        .doctor-name {
+            font-weight: 700;
+            font-size: 18px; /* تكبير الحجم */
+            color: #ffcf7d; /* لون ذهبي ناعم وواضح */
+            text-shadow: 0 2px 10px rgba(255, 207, 125, 0.3);
+        }
+
+        /* 💎 Apple Liquid Glass Buttons */
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            width: 100%;
+            margin: 15px 0;
+            padding: 18px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 600;
+            color: white;
+            font-size: 17px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: translateY(-3px);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn:active { transform: scale(0.97); }
+
+        @media (max-width: 480px) {
+            .container { padding: 35px 15px; }
+            h1 { font-size: 24px; }
+            .doctor-name { font-size: 16px; }
+            .btn { padding: 16px; font-size: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="bg-overlay"></div>
+
+<div class="container">
+    <div class="profile-pic">
+        <img src="https://ik.imagekit.io/GotoLink/Links/Logo.jpg" alt="Diamond Smile">
+    </div>
+
+    <div class="lang-container" id="lang-wrapper">
+        <div class="lang-box" onclick="setLang('ar')">
+            <img src="https://flagcdn.com/w40/eg.png" class="flag">
+            <button>العربية</button>
+        </div>
+        <div class="lang-box" onclick="setLang('en')">
+            <img src="https://flagcdn.com/w40/us.png" class="flag">
+            <button>EN</button>
+        </div>
+        <div class="lang-box" onclick="setLang('fr')">
+            <img src="https://flagcdn.com/w40/fr.png" class="flag">
+            <button>FR</button>
+        </div>
+        <div class="lang-box" onclick="setLang('ru')">
+            <img src="https://flagcdn.com/w40/ru.png" class="flag">
+            <button>RU</button>
+        </div>
+        <div class="lang-box" onclick="setLang('de')">
+            <img src="https://flagcdn.com/w40/de.png" class="flag">
+            <button>DE</button>
+        </div>
+    </div>
+
+    <h1 id="title">دايموند سمايل لطب الأسنان</h1>
+    <div id="subtitle" class="subtitle">لطب وجراحة وتقويم وزراعة وتجميل الاسنان</div>
+
+    <div class="doctors" id="doctors-row">
+        <span id="doc-right" class="doctor-name">د. محمد خالد الزيني</span>
+        <span id="doc-left" class="doctor-name">د. أماني متولي</span>
+    </div>
+
+    <a id="btn-phone" class="btn" href="tel:+201223066691"><span>📞</span> <span class="btn-text">اتصل بنا</span></a>
+    <a id="btn-email" class="btn" href="mailto:DiamondSmile16@gmail.com"><span>✉️</span> <span class="btn-text">أرسل إيميل</span></a>
+    <a id="btn-address" class="btn" target="_blank" href="http://googleusercontent.com/maps.google.com/6"><span>📍</span> <span class="btn-text">موقع العيادة</span></a>
+
+</div>
+
+<script>
+const content = {
+    ar: {
+        title: "دايموند سمايل لطب الأسنان",
+        subtitle: "لطب وجراحة وتقويم وزراعة وتجميل الاسنان",
+        docRight: "د. محمد خالد الزيني",
+        docLeft: "د. أماني متولي",
+        btnPhone: "اتصل بنا",
+        btnEmail: "أرسل إيميل",
+        btnAddress: "موقع العيادة",
+        dir: "rtl"
+    },
+    en: {
+        title: "Diamond Smile Dental Clinic",
+        subtitle: "Dentistry, Surgery, Orthodontics, Implants & Cosmetics",
+        docRight: "Dr. Mohamed Khaled",
+        docLeft: "Dr. Amany Metwally",
+        btnPhone: "Call Us",
+        btnEmail: "Email Us",
+        btnAddress: "Our Location",
+        dir: "ltr"
+    },
+    fr: {
+        title: "Clinique Diamond Smile",
+        subtitle: "Dentisterie, Chirurgie, Orthodontie & Implants",
+        docRight: "Dr Mohamed Khaled",
+        docLeft: "Dr Amany Metwally",
+        btnPhone: "Appelez-nous",
+        btnEmail: "Email",
+        btnAddress: "Emplacement",
+        dir: "ltr"
+    },
+    ru: {
+        title: "Diamond Smile",
+        subtitle: "Хирургия, ортодонтия, имплантация и косметология",
+        docRight: "Д-р Мохамед Халед",
+        docLeft: "Д-р Амани Метвалли",
+        btnPhone: "Позвонить",
+        btnEmail: "Email",
+        btnAddress: "Адрес",
+        dir: "ltr"
+    },
+    de: {
+        title: "Diamond Smile Zahnklinik",
+        subtitle: "Chirurgie, Kieferorthopädie, Implantate & Kosmetik",
+        docRight: "Dr. Mohamed Khaled",
+        docLeft: "Dr. Amany Metwally",
+        btnPhone: "Anrufen",
+        btnEmail: "Email",
+        btnAddress: "Standort",
+        dir: "ltr"
+    }
+};
+
+function setLang(lang) {
+    const data = content[lang];
+    document.documentElement.lang = lang;
+    document.documentElement.dir = data.dir;
+    
+    document.getElementById("title").innerText = data.title;
+    document.getElementById("subtitle").innerText = data.subtitle;
+    document.getElementById("doc-right").innerText = data.docRight;
+    document.getElementById("doc-left").innerText = data.docLeft;
+    document.getElementById("btn-phone").querySelector('.btn-text').innerText = data.btnPhone;
+    document.getElementById("btn-email").querySelector('.btn-text').innerText = data.btnEmail;
+    document.getElementById("btn-address").querySelector('.btn-text').innerText = data.btnAddress;
+}
+</script>
+
+</body>
+</html>
