@@ -20,6 +20,7 @@
             font-family: 'Cairo', sans-serif;
             min-height: 100vh;
             display: flex;
+            flex-direction: column; /* لضمان بقاء الفوتر بالأسفل */
             justify-content: center;
             align-items: center;
             color: white;
@@ -115,7 +116,6 @@
             text-shadow: 0 2px 10px rgba(255, 207, 125, 0.3);
         }
 
-        /* 💎 Apple Liquid Glass Buttons */
         .btn {
             display: flex;
             align-items: center;
@@ -144,10 +144,25 @@
 
         .btn:active { transform: scale(0.97); }
 
-        /* ألوان خاصة لبعض الأيقونات */
         .icon-wa { color: #25D366; }
         .icon-fb { color: #1877F2; }
         .icon-ig { color: #E4405F; }
+
+        /* 🎨 Footer Style */
+        .footer {
+            margin-top: 20px;
+            padding-bottom: 20px;
+            text-align: center;
+            font-size: 12px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .footer p { margin: 5px 0; }
+        .footer a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
 
         @media (max-width: 480px) {
             .container { padding: 35px 15px; }
@@ -190,6 +205,11 @@
     <a id="btn-address" class="btn" target="_blank" href="https://www.google.com/maps/search/%D9%85%D9%88%D9%84%20%D8%B4%D9%83%D8%B3%D8%A8%D9%8A%D8%B1/@27.25600235,33.81722018,17z?hl=en"><span>📍</span> <span class="btn-text">موقع العيادة</span></a>
 
 </div>
+
+<footer class="footer">
+    <p>© <span id="year"></span> Anton Design</p>
+    <p><a href="https://wa.me/+201281358100" target="_blank">Contact Creator</a></p>
+</footer>
 
 <script>
 const content = {
@@ -237,14 +257,10 @@ function setLang(lang) {
     document.getElementById("btn-email").querySelector('.btn-text').innerText = data.btnEmail;
     document.getElementById("btn-address").querySelector('.btn-text').innerText = data.btnAddress;
 }
+
+// تحديث السنة تلقائياً
+document.getElementById("year").textContent = new Date().getFullYear();
 </script>
-	<footer class="footer">
-	  <p>© <span id="year"></span> Anton Design</p>
-	  <p><a href="https://wa.me/+201281358100" target="_blank">Contact Creator</a></p>
-	</footer>
-  </div>
-<script>
-  document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+
 </body>
 </html>
