@@ -238,6 +238,13 @@ function setLang(lang) {
     document.getElementById("btn-address").querySelector('.btn-text').innerText = data.btnAddress;
 }
 </script>
-
+	<footer class="footer">
+	  <p>© <span id="year"></span> Anton Design</p>
+	  <p><a href="https://wa.me/+201281358100" target="_blank">Contact Creator</a></p>
+	</footer>
+  </div>
+<script>
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
